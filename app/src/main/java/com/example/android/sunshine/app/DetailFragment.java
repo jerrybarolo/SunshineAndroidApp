@@ -91,7 +91,6 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     private TextView mHumidityView;
     private TextView mWindView;
     private TextView mPressureView;
-    private CompassView compassView;
 
     public DetailFragment() {
         setHasOptionsMenu(true);
@@ -116,7 +115,6 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         mHumidityView = (TextView) rootView.findViewById(R.id.detail_humidity_textview);
         mWindView = (TextView) rootView.findViewById(R.id.detail_wind_textview);
         mPressureView = (TextView) rootView.findViewById(R.id.detail_pressure_textview);
-        compassView = (CompassView) rootView.findViewById(R.id.compass_view);
         return rootView;
     }
 
@@ -226,8 +224,6 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             // Read pressure from cursor and update view
             float pressure = data.getFloat(COL_WEATHER_PRESSURE);
             mPressureView.setText(getActivity().getString(R.string.format_pressure, pressure));
-
-            compassView.setDegrees(35);
 
             // We still need this for the share intent
             mForecast = String.format("%s - %s - %s/%s", dateText, description, high, low);
